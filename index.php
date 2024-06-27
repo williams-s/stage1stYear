@@ -1,21 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exemple PHP</title>
-</head>
-<body>
-    <h1>Réception des données du formulaire</h1>
+<?php
+// Informations de connexion à la base de données
+$servername = "localhost";
+$username = "williams"; // Nom d'utilisateur par défaut de MySQL
+$password = "Ravus77!"; // Mot de passe par défaut pour MySQL
+$dbname = "test";
 
-    <div>
-        <?php
-        // Traitement des données du formulaire
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $name = htmlspecialchars($_POST['name']);
-            echo "<p>Bonjour, $name!</p>";
-        }
-        ?>
-    </div>
-</body>
-</html>
+// Créer une connexion
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Vérifier la connexion
+if ($conn->connect_error) {
+    die("Connexion échouée : " . $conn->connect_error);
+}
+
+// Exécuter une requête SELECT
+$sql = "SELECT * todo_list";
+$result = $conn->query($sql);
+
+$todo = [];
+
+if ($result->num_rows > 0) {
+    // Récupérer les données de chaque ligne
+    while($row = $result->fetch_assoc()) {
+        $todo[] = $row;
+    }
+}
+
+// Fermer la connexion
+$conn->close();
+
+// Renvoyer les données en format JSON
+header('Content-Type: application/json');
+echo json_encode($todo);
+?>
