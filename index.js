@@ -26,7 +26,7 @@ function fetchData() {
             data.forEach(todo => {
                 let row = document.createElement('tr');
                 row.innerHTML = `
-                    <td>${todo.id}</td>
+                    <td>${todo.item_id}</td>
                     <td>${todo.content}</td>
                 `;
                 tableBody.appendChild(row);
