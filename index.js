@@ -26,6 +26,7 @@ function fetchData() {
                 row.innerHTML = `
                     <td>${todo.item_id}</td>
                     <td>${todo.content}</td>
+                    <td><button class="btn-delete" onclick="deleteTodo(${todo.item_id})">Supprimer</button></td>
                 `;
                 tableBody.appendChild(row);
             });
