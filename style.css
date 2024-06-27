@@ -38,7 +38,6 @@ p {
 }
 
 #todo-table-body {
-    /* Ajoutez vos styles CSS ici */
     background-color: RED;
     border: 1px solid black;
     padding: 10px;

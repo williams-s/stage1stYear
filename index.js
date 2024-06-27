@@ -1,4 +1,3 @@
-// JavaScript pour la fonctionnalité de quiz
 const questionContainer = document.querySelector(".box");
 const btns = Array.from(questionContainer.querySelectorAll('button'));
 const reponse = questionContainer.querySelector('p');
@@ -16,7 +15,6 @@ for (let i = 0; i < btns.length; i++) {
     });
 }
 
-// Fonction pour récupérer les données depuis index.php
 function fetchData() {
     fetch('index.php')
         .then(response => response.json())
@@ -36,8 +34,6 @@ function fetchData() {
 }
 
 const myForm = document.getElementById('myForm');
-
-// Écouter l'événement de soumission du formulaire
 myForm.addEventListener('submit', function(event) {
     // Empêcher le comportement par défaut du formulaire (rechargement de page)
     event.preventDefault();
@@ -45,7 +41,6 @@ myForm.addEventListener('submit', function(event) {
     // Récupérer les données du formulaire
     const name = new FormData(myForm);
 
-    // Effectuer une requête POST avec fetch
     fetch('get.php', {
         method: 'POST',
         body: name
@@ -54,19 +49,15 @@ myForm.addEventListener('submit', function(event) {
         if (!response.ok) {
             throw new Error('Erreur lors de la requête');
         }
-        return response.text(); // Traitez la réponse comme du texte si nécessaire
+        return response.text(); 
     })
     .then(data => {
-        // Faire quelque chose avec la réponse si nécessaire
         console.log('Réponse reçue:', data);
-        // Exemple : actualiser les données après l'insertion
-        fetchData(); // Appeler votre fonction pour actualiser les données
-        // Réinitialiser le formulaire si nécessaire
+        fetchData();
         myForm.reset();
     })
     .catch(error => {
         console.error('Erreur:', error);
-        // Gérer les erreurs si nécessaire
     }); 
 });
 
