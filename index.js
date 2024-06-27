@@ -63,6 +63,25 @@ myForm.addEventListener('submit', function(event) {
 });
 
 
+function deleteTodo(item_id) {
+    if (confirm('Voulez-vous supprimer cette tâche ?')) {
+        fetch(`delete.php?item_id=${item_id}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erreur lors de la requête');
+                }
+                return response.text();
+            })
+            .then(data => {
+                console.log('Réponse reçue:', data);
+                fetchData();
+            })
+            .catch(error => {
+                console.error('Erreur:', error);
+            });
+    }
+}
+
 
 
 // Appeler fetchData lorsque la page est chargée
