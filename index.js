@@ -35,5 +35,43 @@ function fetchData() {
         .catch(error => console.error('Erreur:', error));
 }
 
+const myForm = document.getElementById('myForm');
+
+// Écouter l'événement de soumission du formulaire
+myForm.addEventListener('submit', function(event) {
+    // Empêcher le comportement par défaut du formulaire (rechargement de page)
+    event.preventDefault();
+
+    // Récupérer les données du formulaire
+    const name = new name(myForm);
+
+    // Effectuer une requête POST avec fetch
+    fetch('get.php', {
+        method: 'POST',
+        body: name
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erreur lors de la requête');
+        }
+        return response.text(); // Traitez la réponse comme du texte si nécessaire
+    })
+    .then(data => {
+        // Faire quelque chose avec la réponse si nécessaire
+        console.log('Réponse reçue:', data);
+        // Exemple : actualiser les données après l'insertion
+        fetchData(); // Appeler votre fonction pour actualiser les données
+        // Réinitialiser le formulaire si nécessaire
+        myForm.reset();
+    })
+    .catch(error => {
+        console.error('Erreur:', error);
+        // Gérer les erreurs si nécessaire
+    }); 
+});
+
+
+
+
 // Appeler fetchData lorsque la page est chargée
 window.onload = fetchData;

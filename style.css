@@ -36,3 +36,19 @@ p {
     padding: 100px;
     
 }
+
+#todo-table-body {
+    /* Ajoutez vos styles CSS ici */
+    background-color: RED;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+#todo-table-body td {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+#todo-table-body tr {
+    border: 1px solid black;
+}
