@@ -4,11 +4,18 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+require 'vendor/autoload.php';
+
+use Symfony\Component\Yaml\Yaml;
+
+// Charger les informations de connexion depuis le fichier YAML
+$config = Yaml::parseFile('config.yaml');
+
 // Informations de connexion à la base de données
-$servername = "localhost";
-$username = "williams"; // Nom d'utilisateur MySQL
-$password = "Ravus77!"; // Mot de passe MySQL
-$dbname = "test";
+$servername = $config['database']['host'];
+$username = $config['database']['username'];
+$password = $config['database']['password'];
+$dbname = $config['database']['dbname'];
 
 // Créer une connexion
 $conn = new mysqli($servername, $username, $password, $dbname);
