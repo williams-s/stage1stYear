@@ -2,4 +2,4 @@ database:
   host: "localhost"
   username: "williams"
   password: "Ravus77!"
-  dbname: "test"  
+  dbname: "test"
