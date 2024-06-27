@@ -43,7 +43,7 @@ myForm.addEventListener('submit', function(event) {
     event.preventDefault();
 
     // Récupérer les données du formulaire
-    const name = new name(myForm);
+    const name = new FormData(myForm);
 
     // Effectuer une requête POST avec fetch
     fetch('get.php', {
