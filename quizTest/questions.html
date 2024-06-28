@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions sur Valorant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .question-container {
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .question {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .btn-next {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+        .btn-next:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="questionContainer">
+        <div class="question-container" id="question1">
+            <p class="question">Quel est le nom de l'organisation qui recrute les agents de Valorant ?</p>
+            <div class="btn-container">
+                <button class="btn-next" onclick="nextQuestion('question2')">Suivant</button>
+            </div>
+        </div>
+        <div class="question-container" id="question2" style="display: none;">
+            <p class="question">Quel est le rôle principal de Sona dans une partie de League of Legends ?</p>
+            <div class="btn-container">
+                <button class="btn-next" onclick="nextQuestion('question3')">Suivant</button>
+            </div>
+        </div>
+        <!-- Continuez ainsi pour chaque question en changeant les IDs et les questions -->
+    </div>
+
+    <script>
+        function nextQuestion(nextQuestionId) {
+            var currentQuestion = document.getElementById(nextQuestionId);
+            if (currentQuestion) {
+                currentQuestion.style.display = 'block';
+                // Scroll to the next question
+                window.scrollTo(0, currentQuestion.offsetTop);
+
+                // Hide previous question
+                var previousQuestionId = parseInt(nextQuestionId.replace('question', ''), 10) - 1;
+                var previousQuestion = document.getElementById('question' + previousQuestionId);
+                if (previousQuestion) {
+                    previousQuestion.style.display = 'none';
+                }
+            } else {
+                console.error('Question not found:', nextQuestionId);
+            }
+        }
+    </script>
+    <script src="getQuestions.js"></script>
+</body>
+</html>
