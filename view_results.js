@@ -24,7 +24,6 @@ function getDrawings() {
             let user_name = document.createElement('p');
             user_name.textContent = user.username;
             //console.log(user_name.textContent);
-            user_name.classList.add('dynamic-username');
             results_players.appendChild(img);
             results_players.appendChild(user_name);
         });
