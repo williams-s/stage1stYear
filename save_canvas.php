@@ -52,13 +52,17 @@ try {
 
         // Sauvegarder l'image dans un fichier
         $filePath = 'uploads/' . uniqid() . '.' . $type;
+        $fileName = basename($filePath); // Récupérer seulement le nom du fichier à partir du chemin complet
+        // Creer le dossier uploads s'il n'existe pas
+        // Générer le lien vers view_image.html avec le paramètre filePath
+        $link = 'view_image.html?filePath=' . urlencode('uploads/' . $fileName);
         if (!file_put_contents($filePath, $image)) {
             throw new \Exception('Impossible de sauvegarder le fichier image');
         }
 
         // Renvoyer le chemin de l'image sauvegardée
-        $conn->query("INSERT INTO users (username, photo_url) VALUES ('$name', '$filePath')");
-        echo json_encode(['filePath' => $filePath]);
+        $conn->query("INSERT INTO users (username, photo_url) VALUES ('$name', '$link')");
+        echo json_encode(['link' => $link]);
 
     } else {
         throw new \Exception('Aucune image reçue');
