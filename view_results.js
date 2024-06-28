@@ -53,3 +53,10 @@ document.getElementById('btn-deleteAll').addEventListener('click', () => {
     })
     .catch(error => console.error('Error:', error));
 })
+
+
+
+const startBtn = document.getElementById('btn1');
+startBtn.addEventListener('click', () => {
+  localStorage.setItem('startCompteur', 'true');
+});
