@@ -7,8 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const results_players = document.querySelector('.results-players');
-const borderDrawing = document.createElement('div');
-borderDrawing.classList.add('border-drawing');
+
 function getDrawings() {
     fetch('getDrawings.php')
     .then(response => response.json())
@@ -25,10 +24,9 @@ function getDrawings() {
             let user_name = document.createElement('p');
             user_name.textContent = user.username;
             //console.log(user_name.textContent);
-            borderDrawing.appendChild(img);
-            borderDrawing.appendChild(user_name);
-            results_players.appendChild(borderDrawing);
-
+            
+            results_players.appendChild(img);
+            results_players.appendChild(user_name);
         });
     })
     .catch(error => console.error('Error:', error));
