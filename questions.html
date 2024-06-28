@@ -53,12 +53,7 @@
         <button id="switch">Voir les réponses</button>
     </div>
     <div id="questionContainer">
-        <div class="question-container" id="question0">
-            <p class="question">Début du quiz sur Valorant</p>
-            <div class="btn-container">
-                <button class="btn-next" onclick="nextQuestion('question1')">Suivant</button>
-            </div>
-        </div>    
+        <!-- Les questions seront chargées dynamiquement ici -->
     </div>
 
     <script>
@@ -87,7 +82,11 @@
                         questionsContainer.appendChild(questionContainer);
                     });
                     
-                    
+                    // Affiche la première question
+                    const firstQuestion = document.getElementById('question1');
+                    if (firstQuestion) {
+                        firstQuestion.style.display = 'block';
+                    }
                 })
                 .catch((error) => console.error(error));
         });
