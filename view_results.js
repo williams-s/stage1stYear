@@ -62,11 +62,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Ajout d'un écouteur d'événement pour démarrer le compteur
-    const startBtn = document.getElementById('start-btn');
-    if (startBtn) {
-        startBtn.addEventListener('click', () => {
-            localStorage.setItem('startCompteur', 'true');
-            console.log(localStorage.getItem('startCompteur'));
-        });
-    }
+
 });
