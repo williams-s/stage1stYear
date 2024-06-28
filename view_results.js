@@ -23,7 +23,7 @@ function getDrawings() {
             
             let user_name = document.createElement('p');
             user_name.textContent = user.user_name;
-
+            user_name.classList.add('dynamic-username');
             results_players.appendChild(img);
             results_players.appendChild(user_name);
         });
@@ -36,3 +36,13 @@ getDrawings();
 
 // Rafraîchissement automatique toutes les 5 secondes
 setInterval(getDrawings, 5000);
+    
+document.getElementById('btn-deleteAll').addEventListener('click', () => {
+    fetch('delete.php')
+    .then(response => response.json())
+    .then(data => {
+        results_players.innerHTML = '';
+        alert('Toutes les images ont été supprimées');
+    })
+    .catch(error => console.error('Error:', error));
+})
