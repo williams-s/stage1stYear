@@ -17,6 +17,8 @@ function getDrawings() {
 
         data.forEach(user => {
             let img = document.createElement('img');
+            let borderDrawing = document.createElement('div');
+            border.classList.add('border-drawing');
             img.src = user.photo_url;
             // Utilisez une classe pour cibler les images générées dynamiquement
             img.classList.add('dynamic-image');
@@ -24,9 +26,11 @@ function getDrawings() {
             let user_name = document.createElement('p');
             user_name.textContent = user.username;
             //console.log(user_name.textContent);
-            
-            results_players.appendChild(img);
-            results_players.appendChild(user_name);
+            borderDrawing.appendChild(img);
+            borderDrawing.appendChild(user_name);
+            results_players.appendChild(borderDrawing);
+/*             results_players.appendChild(img);
+            results_players.appendChild(user_name); */
         });
     })
     .catch(error => console.error('Error:', error));
