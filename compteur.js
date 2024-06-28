@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const timer = document.getElementById("compteur");
     if (timer) {
         const timeReset = parseInt(timer.textContent);
-        console.log(timeReset);
         let i = timeReset;
         let interval;
 
@@ -26,9 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Écouter les changements dans localStorage pour démarrer/arrêter le compteur
         window.addEventListener("storage", (event) => {
-            console.log("Changement dans localStorage :", event.key, event.newValue);
+            console.log("Storage event detected:", event.key, event.newValue);
             if (event.key === "startCompteur" && event.newValue === "true") {
-                console.log("Compteur de désactivation");
+                console.log("Compteur démarré depuis une autre page");
                 clearInterval(interval);
                 i = timeReset; // Réinitialisation à la valeur initiale
                 timer.textContent = i; // Mettre à jour l'affichage
