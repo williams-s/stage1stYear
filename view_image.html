@@ -4,18 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image View</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <h1>Image View</h1>
-    <img id="canvas-image" src="" alt="Canvas Image">
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const filePath = urlParams.get('filePath');
-            if (filePath) {
-                document.getElementById('canvas-image').src = filePath;
-            }
-        });
-    </script>
+    <div class="results-players">
+        <img id="canvas-image" src="" alt="Canvas Image">
+    </div>
+    <script src="./view_results.js"></script>
 </body>
 </html>

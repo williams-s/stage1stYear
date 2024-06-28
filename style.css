@@ -50,6 +50,20 @@ button:hover {
     border : 2px solid black;
 }
 
+.result-player {
+    margin: 10px;
+    white-space: nowrap;
+  }
+  .result-player img {
+    display: inline-block;
+    vertical-align: middle; 
+    margin-right: 10px;
+  }
+  .result-player p {
+    display: inline-block;
+    vertical-align: middle; 
+  }
+
 
 
 /* .box{
