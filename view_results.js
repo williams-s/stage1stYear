@@ -38,7 +38,9 @@ getDrawings();
 setInterval(getDrawings, 5000);
     
 document.getElementById('btn-deleteAll').addEventListener('click', () => {
-    fetch('delete.php')
+    fetch('delete.php', {
+        method: 'DELETE'
+    })
     .then(response => response.json())
     .then(data => {
         results_players.innerHTML = '';

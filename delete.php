@@ -20,36 +20,37 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Vérifier la connexion
 if ($conn->connect_error) {
-    die("Connexion échouée : " . $conn->connect_error);
+    header('Content-Type: application/json');
+    echo json_encode(['error' => "Connexion échouée : " . $conn->connect_error]);
+    exit();
 }
 
 // Vérifier si la méthode HTTP est DELETE
 if ($_SERVER["REQUEST_METHOD"] === "DELETE") {
-    // Récupérer et sécuriser l'ID de l'élément à supprimer
-    $itemId = $_GET['id'];
-    $itemId = $conn->real_escape_string($itemId); // Échapper les caractères spéciaux
-
-    // Préparer la requête DELETE avec une requête préparée
-    $sql = "DELETE FROM users WHERE user_id > 0";
+    // Préparer la requête DELETE pour supprimer tous les enregistrements
+    $sql = "DELETE FROM users";
     $stmt = $conn->prepare($sql);
 
     if ($stmt) {
-        // Liaison des paramètres et exécution de la requête
+        // Exécuter la requête
         $stmt->execute();
 
         if ($stmt->affected_rows > 0) {
             header('Content-Type: application/json');
             echo json_encode(['success' => true]);
         } else {
-            echo "No record found with ID: " . $itemId;
+            header('Content-Type: application/json');
+            echo json_encode(['error' => "No records found to delete"]);
         }
 
         $stmt->close();
     } else {
-        echo "Error preparing statement: " . $conn->error;
+        header('Content-Type: application/json');
+        echo json_encode(['error' => "Error preparing statement: " . $conn->error]);
     }
 } else {
-    echo "Invalid request method. Only DELETE method is allowed.";
+    header('Content-Type: application/json');
+    echo json_encode(['error' => "Invalid request method. Only DELETE method is allowed."]);
 }
 
 // Fermer la connexion
