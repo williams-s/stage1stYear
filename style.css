@@ -79,7 +79,13 @@ button:hover {
     /* Autres styles */
 }
 
-
+p{
+    color: black;
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px;
+}
 
 /* .box{
     border: 6px solid green;
