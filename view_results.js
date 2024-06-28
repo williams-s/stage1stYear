@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (startBtn) {
         startBtn.addEventListener('click', () => {
             localStorage.setItem('startCompteur', 'true');
-            console.log('Start Compteur button clicked');
+            console.log(localStorage.getItem('startCompteur'));
         });
     }
 });
