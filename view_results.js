@@ -13,7 +13,7 @@ function getDrawings(){
     .then(response => response.json())
     .then(data => {
         data.forEach(user => {
-            let img = document.createElement('src');
+            let img = document.createElement('img');
             img.src = user.photo_url;
             img.id = "canvas-image";
             let user_name = document.createElement('p');
