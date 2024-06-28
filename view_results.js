@@ -18,7 +18,7 @@ function getDrawings() {
         data.forEach(user => {
             let img = document.createElement('img');
             let borderDrawing = document.createElement('div');
-            border.classList.add('border-drawing');
+            borderDrawing.classList.add('border-drawing');
             img.src = user.photo_url;
             // Utilisez une classe pour cibler les images générées dynamiquement
             img.classList.add('dynamic-image');
