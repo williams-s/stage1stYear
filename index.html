@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <h1>Server LAMP test</h1>
+<!--     <h1>Server LAMP test</h1>
     <div class="box">
         <h4>Quelle est la capitale de la France ?</h4>
         <button id="btn-1">Paris</button>
@@ -32,8 +32,28 @@
         </thead>
         <tbody id="todo-table-body">
         </tbody>
-    </table>
-
+    </table> -->
+    <div class="btn-container">
+        <button id="btn-clear">Effacer</button>
+        <button id="btn-blue">Bleu</button>
+        <button id="btn-green">Vert</button>
+        <button id="btn-red">Rouge</button>
+        <button id="btn-orange">Orange</button>
+        <button id="btn-purple">Violet</button>
+        <button id="btn-yellow">Jaune</button>
+        <button id="btn-black">Noir</button>
+        <button id="btn-erase">Gomme</button>
+        <input id ="color-picker" type="color"/>
+        <input type="range" id="brush-size" min="1" max="50" value="5">
+    </div>
+    <canvas id="canvas" width="1000" height="750"
+        style = "border: 1px solid red">
+    </canvas>
+    <div class = "sender">
+        <button id="btn-send">Envoyer le dessin</button>
+        
+    </div>
     <script src="./index.js"></script>
+    <script src="./canvas.js"></script>
 </body>
 </html>

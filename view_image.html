@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afficher l'image</title>
+</head>
+<body>
+    <h1>Image Sauvegardée</h1>
+    <img id="savedImage" src="" alt="Image Sauvegardée" />
+    <script>
+        // Récupérer le chemin de l'image depuis l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const filePath = urlParams.get('filePath');
+
+        // Afficher l'image
+        if (filePath) {
+            document.getElementById('savedImage').src = filePath;
+        } else {
+            document.body.innerHTML = '<p>Erreur: Aucune image à afficher</p>';
+        }
+    </script>
+</body>
+</html>
