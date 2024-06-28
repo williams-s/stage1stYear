@@ -7,9 +7,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Vérifie l'URL complète pour une correspondance précise
         if (window.location.pathname.endsWith('/view_image.html')) {
             console.log("view_image");
-            window.location.href = '/view_results.html';
-        } else if (window.location.pathname.endsWith('/view_results.html')) {
-            console.log("view_results");
             window.location.href = '/questions.html';
         } else if (window.location.pathname.endsWith('/questions.html')) {
             console.log("questions");
