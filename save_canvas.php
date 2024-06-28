@@ -4,6 +4,23 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+
+require 'vendor/autoload.php';
+
+use Symfony\Component\Yaml\Yaml;
+
+$config = Yaml::parseFile('config.yaml');
+
+$servername = $config['database']['host'];
+$username = $config['database']['username'];
+$password = $config['database']['password'];
+$dbname = $config['database']['dbname'];
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connexion échouée : " . $conn->connect_error);
+}
 // Définir l'en-tête de réponse comme JSON
 header('Content-Type: application/json');
 
@@ -11,8 +28,9 @@ try {
     // Lire le contenu de la requête POST
     $data = json_decode(file_get_contents('php://input'), true);
 
-    if ($data && isset($data['image'])) {
+    if ($data && isset($data['image']) && isset($data['name'])) {
         $image = $data['image'];
+        $name = $data['name'];
 
         // Vérifier si l'image est une data URL
         if (preg_match('/^data:image\/(\w+);base64,/', $image, $type)) {
@@ -39,7 +57,9 @@ try {
         }
 
         // Renvoyer le chemin de l'image sauvegardée
+        $conn->query("INSERT INTO users (username, photo_url) VALUES ('$name', '$filePath')");
         echo json_encode(['filePath' => $filePath]);
+
     } else {
         throw new \Exception('Aucune image reçue');
     }

@@ -95,13 +95,16 @@ brushSize.addEventListener('change', (e) => {
 const sendBtn = document.getElementById('btn-send');
 sendBtn.addEventListener('click', () => {
     const dataURL = myCanvas.toDataURL('image/png');
-
+    const name = document.getElementById('text-input').value;
     fetch('save_canvas.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ image: dataURL })
+        body: JSON.stringify({ 
+            image: dataURL,
+            name: name 
+        })
     })
     .then(response => {
         return response.text(); // Lire la réponse en tant que texte pour déboguer
