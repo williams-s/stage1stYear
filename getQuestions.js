@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const questionContainer = document.createElement("div");
         questionContainer.className = "question-container";
         questionContainer.id = `question${question.id}`;
+        questionContainer.style.display = "none";
         questionContainer.innerHTML = `
                 <p class="question">${question.question}</p>
                 <div class="btn-container">
