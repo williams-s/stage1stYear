@@ -114,7 +114,9 @@ sendBtn.addEventListener('click', () => {
             const json = JSON.parse(data);
             if (json.filePath) {
                 // Rediriger vers la page d'affichage de l'image
-                window.location.href = `view_image.html?filePath=${json.filePath}`;
+                console.log("Envoi reussi");
+                ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
+                //window.location.href = `view_image.html?filePath=${json.filePath}`;
             } else {
                 console.error('Erreur:', json.error);
             }
