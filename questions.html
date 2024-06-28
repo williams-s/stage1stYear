@@ -58,7 +58,6 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // Récupère les questions depuis le serveur (simulé ici)
             fetch("getQuestions.php")
                 .then((response) => response.json())
                 .then((data) => {
@@ -74,7 +73,7 @@
                             <div class="btn-container">
                                 ${
                                     index < data.length - 1
-                                        ? `<button class="btn-next" onclick="nextQuestion('question${question.id}')">Suivant</button>`
+                                        ? `<button class="btn-next" onclick="nextQuestion(${question.id})">Suivant</button>`
                                         : `<button class="btn-next" disabled>Fin du quiz</button>`
                                 }
                             </div>
@@ -91,22 +90,19 @@
                 .catch((error) => console.error(error));
         });
 
-        function nextQuestion(nextQuestionId) {
-            const currentQuestion = document.getElementById(nextQuestionId);
+        function nextQuestion(questionId) {
+            const currentQuestion = document.getElementById(`question${questionId}`);
             if (currentQuestion) {
-                currentQuestion.style.display = 'block';
-                window.scrollTo(0, currentQuestion.offsetTop);
-            }
+                currentQuestion.style.display = 'none';
 
-            // Cache la question précédente
-            const previousQuestionId = parseInt(nextQuestionId.replace('question', ''), 10) - 1;
-            const previousQuestion = document.getElementById('question' + previousQuestionId);
-            if (previousQuestion) {
-                previousQuestion.style.display = 'none';
+                // Trouve l'ID de la question suivante
+                const nextQuestionId = questionId + 1;
+                const nextQuestion = document.getElementById(`question${nextQuestionId}`);
+                if (nextQuestion) {
+                    nextQuestion.style.display = 'block';
+                    window.scrollTo(0, nextQuestion.offsetTop);
+                }
             }
-
-            // Enregistre l'ID de la question actuelle dans localStorage
-            localStorage.setItem('currentQuestionId', nextQuestionId);
         }
 
         // Gestion du bouton de commutation
