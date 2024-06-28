@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (startBtn) {
         startBtn.addEventListener('click', () => {
             localStorage.setItem('startCompteur', 'true');
+            console.log('Starting timer...');
         });
     }
 });
