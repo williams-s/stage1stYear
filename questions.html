@@ -104,19 +104,6 @@
                 }
             }
         }
-
-        // Gestion du bouton de commutation
-        const switchBtn = document.getElementById('switch');
-        switchBtn.addEventListener('click', () => {
-            const currentQuestionId = localStorage.getItem('currentQuestionId');
-            if (currentQuestionId) {
-                const currentQuestion = document.getElementById(currentQuestionId);
-                if (currentQuestion) {
-                    currentQuestion.style.display = 'block';
-                    window.scrollTo(0, currentQuestion.offsetTop);
-                }
-            }
-        });
     </script>
     <script src = "./swapping.js"></script>
 </body>
