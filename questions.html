@@ -24,7 +24,6 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             margin-bottom: 20px;
-            margin: auto;
         }
         .question {
             font-size: 1.2em;
@@ -51,7 +50,7 @@
 </head>
 <body>
     <div class="btn-container">
-        <button id ="switch">Voir les réponses</button>
+        <button id="switch">Voir les réponses</button>
     </div>
     <div id="questionContainer">
         <div class="question-container" id="question0">
@@ -59,36 +58,74 @@
             <div class="btn-container">
                 <button class="btn-next" onclick="nextQuestion('question1')">Suivant</button>
             </div>
-        </div>
-<!--         <div class="question-container" id="question2" style="display: none;">
-            <p class="question">Quel est le rôle principal de Sona dans une partie de League of Legends ?</p>
-            <div class="btn-container">
-                <button class="btn-next" onclick="nextQuestion('question3')">Suivant</button>
-            </div>
-        </div> -->
-        <!-- Continuez ainsi pour chaque question en changeant les IDs et les questions -->
+        </div>    
     </div>
 
     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Récupère les questions depuis le serveur (simulé ici)
+            fetch("getQuestions.php")
+                .then((response) => response.json())
+                .then((data) => {
+                    const questionsContainer = document.getElementById("questionContainer");
+
+                    data.forEach((question, index) => {
+                        const questionContainer = document.createElement("div");
+                        questionContainer.className = "question-container";
+                        questionContainer.id = `question${question.id}`;
+                        questionContainer.style.display = "none";
+                        questionContainer.innerHTML = `
+                            <p class="question">${question.question}</p>
+                            <div class="btn-container">
+                                ${
+                                    index < data.length - 1
+                                        ? `<button class="btn-next" onclick="nextQuestion('question${question.id}')">Suivant</button>`
+                                        : `<button class="btn-next" disabled>Fin du quiz</button>`
+                                }
+                            </div>
+                        `;
+                        questionsContainer.appendChild(questionContainer);
+                    });
+                    
+                    // Affiche la première question
+                    const firstQuestion = document.getElementById('question1');
+                    if (firstQuestion) {
+                        firstQuestion.style.display = 'block';
+                    }
+                })
+                .catch((error) => console.error(error));
+        });
+
         function nextQuestion(nextQuestionId) {
-            var currentQuestion = document.getElementById(nextQuestionId);
+            const currentQuestion = document.getElementById(nextQuestionId);
             if (currentQuestion) {
                 currentQuestion.style.display = 'block';
-                // Scroll to the next question
                 window.scrollTo(0, currentQuestion.offsetTop);
-
-                // Hide previous question
-                var previousQuestionId = parseInt(nextQuestionId.replace('question', ''), 10) - 1;
-                var previousQuestion = document.getElementById('question' + previousQuestionId);
-                if (previousQuestion) {
-                    previousQuestion.style.display = 'none';
-                }
-            } else {
-                console.error('Question not found:', nextQuestionId);
             }
+
+            // Cache la question précédente
+            const previousQuestionId = parseInt(nextQuestionId.replace('question', ''), 10) - 1;
+            const previousQuestion = document.getElementById('question' + previousQuestionId);
+            if (previousQuestion) {
+                previousQuestion.style.display = 'none';
+            }
+
+            // Enregistre l'ID de la question actuelle dans localStorage
+            localStorage.setItem('currentQuestionId', nextQuestionId);
         }
+
+        // Gestion du bouton de commutation
+        const switchBtn = document.getElementById('switch');
+        switchBtn.addEventListener('click', () => {
+            const currentQuestionId = localStorage.getItem('currentQuestionId');
+            if (currentQuestionId) {
+                const currentQuestion = document.getElementById(currentQuestionId);
+                if (currentQuestion) {
+                    currentQuestion.style.display = 'block';
+                    window.scrollTo(0, currentQuestion.offsetTop);
+                }
+            }
+        });
     </script>
-    <script src="./getQuestions.js"></script>
-    <script src ="./swapping.js"></script>
 </body>
 </html>
