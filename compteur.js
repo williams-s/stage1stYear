@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Écouter les changements dans localStorage pour démarrer/arrêter le compteur
         window.addEventListener("storage", (event) => {
+            console.log("Changement dans localStorage :", event.key, event.newValue);
             if (event.key === "startCompteur" && event.newValue === "true") {
                 console.log("Compteur de désactivation");
                 clearInterval(interval);
