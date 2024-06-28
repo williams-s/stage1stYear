@@ -38,7 +38,8 @@ if ($_SERVER["REQUEST_METHOD"] === "DELETE") {
         $stmt->execute();
 
         if ($stmt->affected_rows > 0) {
-            echo "Records deleted successfully";
+            header('Content-Type: application/json');
+            echo json_encode(['success' => true]);
         } else {
             echo "No record found with ID: " . $itemId;
         }
