@@ -6,18 +6,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-
 const results_players = document.querySelector('.results-players');
-function getDrawings(){
+
+function getDrawings() {
     fetch('getDrawings.php')
     .then(response => response.json())
     .then(data => {
+        // Effacer le contenu existant de results_players avant d'ajouter de nouvelles images
+        results_players.innerHTML = '';
+
         data.forEach(user => {
             let img = document.createElement('img');
             img.src = user.photo_url;
-            img.id = "canvas-image";
+            // Utilisez une classe pour cibler les images générées dynamiquement
+            img.classList.add('dynamic-image');
+            
             let user_name = document.createElement('p');
             user_name.textContent = user.user_name;
+
             results_players.appendChild(img);
             results_players.appendChild(user_name);
         });
@@ -25,11 +31,8 @@ function getDrawings(){
     .catch(error => console.error('Error:', error));
 }
 
-setInterval(getDrawings, 5000);
-
+// Appel initial à la fonction getDrawings()
 getDrawings();
 
-
-
-
-
+// Rafraîchissement automatique toutes les 5 secondes
+setInterval(getDrawings, 5000);
