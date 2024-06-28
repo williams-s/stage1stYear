@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const timer = document.getElementById("compteur");
     if (timer) {
         const timeReset = parseInt(timer.textContent);
+        console.log(timeReset);
         let i = timeReset;
         let interval;
 
