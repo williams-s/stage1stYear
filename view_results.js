@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const results_players = document.querySelector('.results-players');
 function getDrawings(){
-    fetch('view_results.php')
+    fetch('getDrawings.php')
     .then(response => response.json())
     .then(data => {
         data.forEach(user => {
