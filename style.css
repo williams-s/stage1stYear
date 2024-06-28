@@ -50,7 +50,7 @@ button:hover {
     border : 2px solid black;
 }
 
-.results-player {
+.results-players {
     margin: 10px;
     white-space: nowrap;
     border: 6px solid red;
@@ -59,12 +59,12 @@ button:hover {
     width: 1000px;
     height: 800px;
 }
-.results-player img {
+.results-players img {
     display: inline-block;
     vertical-align: middle; 
     margin-right: 10px;
 }
-.results-player p {
+.results-players p {
     display: inline-block;
     vertical-align: middle; 
 
