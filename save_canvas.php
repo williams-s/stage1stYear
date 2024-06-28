@@ -61,7 +61,7 @@ try {
         }
 
         // Renvoyer le chemin de l'image sauvegardée
-        $conn->query("INSERT INTO users (username, photo_url) VALUES ('$name', '$link')");
+        $conn->query("INSERT INTO users (username, photo_url) VALUES ('$name', '$filePath')");
         echo json_encode(['filePath' => $filePath]);
 
     } else {
