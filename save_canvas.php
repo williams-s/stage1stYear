@@ -62,7 +62,7 @@ try {
 
         // Renvoyer le chemin de l'image sauvegardée
         $conn->query("INSERT INTO users (username, photo_url) VALUES ('$name', '$link')");
-        echo json_encode(['link' => $link]);
+        echo json_encode(['filePath' => $filePath]);
 
     } else {
         throw new \Exception('Aucune image reçue');
