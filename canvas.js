@@ -104,17 +104,19 @@ sendBtn.addEventListener('click', () => {
         body: JSON.stringify({ image: dataURL })
     })
     .then(response => {
-        if (!response.ok) {
-            throw new Error('Erreur lors de l\'envoi de l\'image');
-        }
-        return response.json();
+        return response.text(); // Lire la réponse en tant que texte pour déboguer
     })
     .then(data => {
-        if (data.filePath) {
-            // Rediriger vers la page d'affichage de l'image
-            window.location.href = `view_image.html?filePath=${data.filePath}`;
-        } else {
-            console.error('Erreur:', data.error);
+        try {
+            const json = JSON.parse(data);
+            if (json.filePath) {
+                // Rediriger vers la page d'affichage de l'image
+                window.location.href = `view_image.html?filePath=${json.filePath}`;
+            } else {
+                console.error('Erreur:', json.error);
+            }
+        } catch (e) {
+            console.error('Réponse du serveur non valide:', data); // Afficher la réponse du serveur
         }
     })
     .catch(error => {

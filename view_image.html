@@ -3,22 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Afficher l'image</title>
+    <title>Image View</title>
 </head>
 <body>
-    <h1>Image Sauvegardée</h1>
-    <img id="savedImage" src="" alt="Image Sauvegardée" />
+    <h1>Image View</h1>
+    <img id="canvas-image" src="" alt="Canvas Image">
     <script>
-        // Récupérer le chemin de l'image depuis l'URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const filePath = urlParams.get('filePath');
-
-        // Afficher l'image
-        if (filePath) {
-            document.getElementById('savedImage').src = filePath;
-        } else {
-            document.body.innerHTML = '<p>Erreur: Aucune image à afficher</p>';
-        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const filePath = urlParams.get('filePath');
+            if (filePath) {
+                document.getElementById('canvas-image').src = filePath;
+            }
+        });
     </script>
 </body>
 </html>

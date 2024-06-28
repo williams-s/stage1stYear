@@ -4,6 +4,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+// Définir l'en-tête de réponse comme JSON
 header('Content-Type: application/json');
 
 try {
@@ -33,12 +34,14 @@ try {
 
         // Sauvegarder l'image dans un fichier
         $filePath = 'uploads/' . uniqid() . '.' . $type;
-        file_put_contents($filePath, $image);
+        if (!file_put_contents($filePath, $image)) {
+            throw new \Exception('Impossible de sauvegarder le fichier image');
+        }
 
         // Renvoyer le chemin de l'image sauvegardée
         echo json_encode(['filePath' => $filePath]);
     } else {
-        echo json_encode(['error' => 'Aucune image reçue']);
+        throw new \Exception('Aucune image reçue');
     }
 } catch (Exception $e) {
     // Renvoyer l'erreur en format JSON
