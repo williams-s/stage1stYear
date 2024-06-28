@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener("storage", (event) => {
             if (event.key === "startCompteur" && event.newValue === "true") {
                 clearInterval(interval);
-                i = timeReset;
+                i = timeReset; // Réinitialisation à la valeur initiale
+                timer.textContent = i; // Mettre à jour l'affichage
                 interval = setInterval(actualise, 1000);
             }
         });
