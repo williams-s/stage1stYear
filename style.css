@@ -57,6 +57,7 @@ button:hover {
     position: relative;
     text-align: center;
     margin-top: 10px;
+    width: 1000px;
 }
 /* .results-players img {
     display: inline-block;
