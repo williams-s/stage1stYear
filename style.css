@@ -58,6 +58,7 @@ button:hover {
     text-align: center;
     margin: auto;
     width: 1000px;
+    margin-bottom: 50px;
 }
 /* .results-players img {
     display: inline-block;
@@ -80,7 +81,7 @@ button:hover {
 .dynamic-image {
     width: 700px; /* Exemple de style */
     height: 500px; /* Exemple de style */
-    margin: 5px; /* Exemple de style */
+    margin: 20px; /* Exemple de style */
     border: 1px solid #ccc; /* Exemple de style */
     /* Autres styles */
 }
