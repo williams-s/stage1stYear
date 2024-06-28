@@ -80,11 +80,13 @@ button:hover {
 }
 
 p{
+    background: red;
     color: black;
     font-size: xx-large;
     font-weight: bold;
     text-align: center;
     margin: 10px;
+    height: 500px;
 }
 
 /* .box{
