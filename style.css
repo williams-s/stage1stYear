@@ -87,13 +87,13 @@ button:hover {
     /* Autres styles */
 }
 
-/* p{
+.question-container p{
     color: black;
-    font-size:small;
+    font-size:x-large;
     font-weight: bold;
     text-align: center;
     margin: 10px;
-} */
+}
 
 .question-container {
     padding: 20px;
