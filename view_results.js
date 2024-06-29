@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Utilisez une classe pour cibler les images générées dynamiquement
                 img.classList.add('dynamic-image');
 
-                let user_name = document.createElement('p');
+                let user_name = document.createElement('h1');
                 user_name.textContent = user.username;
 
                 borderDrawing.appendChild(img);
