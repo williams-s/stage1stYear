@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
         questionContainer.style.display = "none";
         questionContainer.innerHTML = `
                 <p class="question">${question.question}</p>
-                <div class="btn-container2">
+                <div class="btn-container22">
                     ${
                       index < data.length - 1
                         ? `
