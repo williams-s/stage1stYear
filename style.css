@@ -40,6 +40,10 @@ body{
     width: 80px;
 }
 
+#btn-deleteAll {
+    position: fixed;
+}
+
 button:hover {
     font-weight: bold;
 }
