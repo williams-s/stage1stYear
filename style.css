@@ -62,11 +62,9 @@ button:hover {
     width: 1000px;
     margin-bottom: 50px;
 }
-/* .results-players img {
-    display: inline-block;
-    vertical-align: middle; 
-    margin-right: 10px;
-} */
+.results-players {
+    display: none;
+}
 /* .results-players p {
     display: inline-block;
     vertical-align: middle; 

@@ -63,5 +63,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Ajout d'un écouteur d'événement pour démarrer le compteur
     
+    const showBtn = document.getElementById('btn-showAnswers');
+    if (showBtn) {
+        showBtn.addEventListener('click', () => {
+            const results_players = document.querySelector('.results-players');
+            if (results_players) {
+                results_players.style.display = 'block';
+            }
+        });
+    }
 
 });
